@@ -21,7 +21,7 @@ if (isset($_GET['user_id']) && isset($_GET['image_id'])){
         exit();
     }
     else{
-        // Check for like with this image_id and this user_id
+        // Check for comment with this image_id and this user_id
         $query1 = $mysqli->prepare("SELECT * FROM comments WHERE image_id = ? AND user_id = ?");
         $query1->bind_param("ii", $img_id, $user_id);
         $query1->execute();
