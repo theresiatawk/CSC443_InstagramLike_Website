@@ -37,7 +37,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             $raw = mysqli_fetch_assoc($result);
             $dbemail = $raw['email'];
             $dbpassword = $raw['password'];
-            // Check for match
+            // Check if credentials match 
             if ($dbemail == $email && password_verify($password, $dbpassword)) {
                 $response["Success"] = $raw;
                 echo json_encode($response);

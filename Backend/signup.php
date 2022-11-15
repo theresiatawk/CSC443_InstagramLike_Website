@@ -18,7 +18,7 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
-        $response ["Error"] = "Some field are required";
+        $response ["Error"] = "Some field are empty";
         echo json_encode($response);
         exit();
     }
