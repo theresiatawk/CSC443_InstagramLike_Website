@@ -19,6 +19,8 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 
     if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
         $response ["Error"] = "Some field are required";
+        echo json_encode($response);
+        exit();
     }
     else{
         // Check if account already exist
@@ -28,17 +30,22 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
         $result = $query1->get_result();
         if (mysqli_num_rows($result) != 0) {
             $response ["Error"] = "This account already exist";
+            echo json_encode($response);
+            exit();
         }
         else{
             $query2 = $mysqli->prepare("INSERT INTO users(first_name, last_name, email, password) VALUES (?, ?, ?, ?);");
             $query2->bind_param("ssss", $first_name, $last_name, $email, $password);
             $query2->execute();
             $response ["Success"] = "Account Created";
+            echo json_encode($response);
+            exit();
         }
     }
 } 
 else{
     $response ["Error"] = "Some field are required";
+    echo json_encode($response);
+    exit();
 }
-echo json_encode($response);
 ?>
