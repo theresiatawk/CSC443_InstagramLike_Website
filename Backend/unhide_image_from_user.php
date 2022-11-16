@@ -32,7 +32,7 @@ if (isset($_GET['user_id_hiding']) && isset($_GET['image_id']) && isset($_GET['u
         $query->bind_param("iii", $user_id_hiding, $user_id_hidden_from, $img_id);
         $query->execute();
         $result = $query->get_result();
-        if (mysqli_num_rows($result) != 0) {
+        if (mysqli_num_rows($result) == 0) {
             $response ["Error"] = "This image is not hidden to unhide it";
             echo json_encode($response);
             exit();
@@ -62,7 +62,7 @@ if (isset($_GET['user_id_hiding']) && isset($_GET['image_id']) && isset($_GET['u
                     exit();
                 }
                 else{
-                    $query3 = $mysqli->prepare("DELETE FROM hidden_images WHERE user_id_hiding = ?, user_id_hidden_from = ?, image_id = ?)");
+                    $query3 = $mysqli->prepare("DELETE FROM hidden_images WHERE user_id_hiding = ? AND user_id_hidden_from = ? AND image_id = ?");
                     $query3->bind_param("iii", $user_id_hiding, $user_id_hidden_from, $img_id);
                     $query3->execute();
                     $response ["Success"] = "Image Unhidden";
