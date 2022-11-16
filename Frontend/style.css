@@ -1,0 +1,6 @@
+.page{
+    background-image: url('assets/backgound_image.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
