@@ -43,6 +43,17 @@ if (isset($_GET['user_id']) && isset($_GET['id'])){
             $query2 = $mysqli->prepare("DELETE FROM images WHERE id = ? AND user_id = ?");
             $query2->bind_param("ii", $img_id, $user_id);
             $query2->execute();
+
+            // Deleting all its like from the db
+            $query3 = $mysqli->prepare("DELETE FROM likes WHERE image_id = ?");
+            $query3->bind_param("i", $img_id);
+            $query3->execute();
+
+            // Deleting all its comments from the db
+            $query4 = $mysqli->prepare("DELETE FROM comments WHERE image_id = ?");
+            $query4->bind_param("i", $img_id);
+            $query4->execute();
+
             $response ["Success"] = "Image Deleted";
             echo json_encode($response);
             exit();
