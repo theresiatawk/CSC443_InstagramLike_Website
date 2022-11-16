@@ -1,6 +1,19 @@
-.page{
+.container{
     background-image: url('assets/backgound_image.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+}
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    top: 50%;
+    box-shadow: 0 0 3px 0;
+    background: inherit;
+    backdrop-filter: blur(8px);
+    margin:100px;
+    text-align: center;
+    border-radius: 25px;
 }
