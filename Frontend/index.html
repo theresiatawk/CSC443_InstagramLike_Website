@@ -9,7 +9,7 @@
 </head>
 <body class = "container">
     <div>
-        <div class = "card">
+        <div class = "card" id = "card1">
             <div class = "header">
                 <h1>Instagram Like</h1>
             </div>
@@ -23,10 +23,37 @@
                 </p>
             </div>
             <div>
-                <button class="joinus"><a class = "go-to" href="page2.html">JOIN US</a></button>
+                <button class="joinus" onclick = "goToLoginHandler()">JOIN US</button>
             </div>
         </div>
-        <div></div>
+        <div class = "login" id = "card2">
+            <div class = "header">
+                <h1>Login</h1>
+            </div>
+            <div class = "description">
+                <p>
+                    
+                </p>
+            </div>
+            <div>
+                <button class="joinus" onclick = "goToSignupHandler()">JOIN US</button>
+            </div>
+        </div>
+        <div class = "signup" id = "card3">
+            <div class = "header">
+                <h1>Signup</h1>
+            </div>
+            <div class = "description">
+                <p>
+                    
+                </p>
+            </div>
+            <div>
+                <button class="joinus" onclick = "goToLoginHandler()">JOIN US</button>
+            </div>
+        </div>
     </div>
+
+    <script src="logic.js" type="text/javascript"></script>
 </body>
 </html>
