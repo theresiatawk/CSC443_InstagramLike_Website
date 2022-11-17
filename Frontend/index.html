@@ -31,29 +31,29 @@
                 <h1>Login</h1>
             </div>
             <div>
-                <form>
-                    <input class = "input" type="text" placeholder="Username"><br><br>
+                <form class = form>
+                    <input class = "input" type="text" placeholder="Email"><br><br>
                     <input class = "input" type="password" placeholder="Password"><br><br>
-                    <label>Do not have an account?</label>
-                    <button><a href="page2.html">Register?</a></button><br>
-                    <input type="submit" value="Submit">
+                    <label class = "small-text">Do not have an account</label>
+                    <a class = "register-link" onclick="goToSignupHandler()"><b>Register?</b></a><br>
+                    <input class = "login-btn" type="button" value="Login">
                 </form>
             </div>
-            <!-- <div>
-                <button class="joinus go-to" onclick = "goToSignupHandler()">JOIN US</button>
-            </div> -->
         </div>
         <div class = "signup" id = "card3">
             <div class = "header">
                 <h1>Signup</h1>
             </div>
-            <div class = "description">
-                <p>
-                    
-                </p>
-            </div>
             <div>
-                <button class="joinus go-to" onclick = "goToLoginHandler()">JOIN US</button>
+                <form class = form>
+                    <input class = "input" type="text" placeholder="First Name"><br><br>
+                    <input class = "input" type="text" placeholder="Last Name"><br><br>
+                    <input class = "input" type="email" placeholder="Email"><br><br>
+                    <input class = "input" type="password" placeholder="Password"><br><br>
+                    <label class = "small-text">Already have an account</label>
+                    <a class = "register-link" onclick="goToLoginHandler()"><b>Login?</b></a><br>
+                    <input class = "login-btn" type="button" value="Signup">
+                </form>
             </div>
         </div>
     </div>
