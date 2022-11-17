@@ -26,10 +26,18 @@
 .description{
     /* font-size: 20px; */
     color: white;
-    margin: 0px 40px 40px 40px;
+    margin: 0px 40px 10px 10px;
     direction: rtl;
     text-align: justify;
 }
 .joinus{
-
+    background-color: transparent;
+    margin: 0px 60px 40px 40px;
+    border-radius: 25px;
+    border-color: #fff;
+    height: 30px;
+}
+.go-to{
+    text-decoration: none;
+    color: white;
 }
