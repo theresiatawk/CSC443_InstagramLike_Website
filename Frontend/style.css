@@ -1,5 +1,6 @@
 .container{
-    background-image: url('assets/backgound_image.jpg');
+    /* background-image: url('assets/backgound_image.jpg'); */
+    background-image: url('assets/purple_background.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -24,5 +25,11 @@
 }
 .description{
     /* font-size: 20px; */
-    margin: 20px, 0, 20px, 100px;
+    color: white;
+    margin: 0px 40px 40px 40px;
+    direction: rtl;
+    text-align: justify;
+}
+.joinus{
+
 }
