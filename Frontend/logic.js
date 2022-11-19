@@ -7,7 +7,7 @@ const remove_icon = document.getElementById("remove_icon");
 const comment_icons = document.querySelectorAll(".comment-img");
 const add_btn = document.getElementById("add_btn");
 const dots_icons = document.querySelectorAll(".dots-img");
-const dropdown_stg = document.getElementById("dropdown_stg");
+const dropdown_stg = document.getElementById("dropdown_stg"); 
 
 
 const goToLoginHandler = () =>{
@@ -46,7 +46,6 @@ const imageSettingHanlder = (e) => {
         dropdown_stg.style.display = "flex";
     }
 }
-
 like_icons.forEach(b => b.addEventListener("click", likeHandler));
 comment_icons.forEach(b => b.addEventListener("click", commentHandler));
 dots_icons.forEach(b => b.addEventListener("click", imageSettingHanlder));
