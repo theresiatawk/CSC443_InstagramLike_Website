@@ -182,3 +182,31 @@
 .img {
   width: 100%;
 }
+.navbar {
+  overflow: hidden;
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  display:flex;
+  width: 100%;
+}
+
+.navbar div {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  flex: 3;
+}
+
+.navbar div:hover {
+  background: #ddd;
+  color: black;
+}
+
+.navbar div.active {
+  background: #ddd;
+  color: black;
+}
