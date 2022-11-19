@@ -31,16 +31,20 @@ instagram_like_pages.signup = async (api_url, api_data, api_token = null) => {
 
 instagram_like_pages.load_landing = async () => {
   const signup_url = base_url + "signup.php";
+  var params = new URLSearchParams();
+  params.append('first_name', 'value1');
+  params.append('last_name', 'value2');
+  params.append('email', 'value2');
+  params.append('password', 'value2');
+
   const signup_data = {
     first_name: "Becca",
-    last_name: "CDaoud",
+    last_name: "tawk",
     email: "Byblos",
     password: "h"
   };
-//   const post_url = base_url + "add_article.php";
+  console.log(signup_data);
 
-  const response = await instagram_like_pages.signup(signup_url, signup_data);
+  const response = await instagram_like_pages.signup(signup_url, params);
   console.log(response);
-
-//   workshop_pages.postAPI(post_url, post_data);
 };
