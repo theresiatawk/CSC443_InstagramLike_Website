@@ -125,35 +125,60 @@
   align-items: center;
 }
 .image-card {
-  height: 400px;
+  height: 440px;
   width: 400px;
-  /* top: 50%; */
   box-shadow: 0 0 3px 0;
   background: inherit;
   backdrop-filter: blur(5px);
   margin: 20px;
   border-radius: 25px;
 }
-.flex-column{
-    display: flex;
-    flex-direction: column;
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
-.flex-row{
-    display: flex;
-    flex-direction: row;
+.flex-row {
+  display: flex;
+  overflow: hidden; /* add this to contain floated children */
 }
-.username{
-    margin: 10px;
+.username {
+  display: flex;
+  flex-direction: row;
+  float: left;
+  margin: 5px;
+  padding-left: 10px;
 }
-.dots-img{
-    margin: 10px;
+.dots-img {
+  display: flex;
+  float: right;
+  margin: 5px;
+  align-items: flex-end;
+  padding-left: 270px;
 }
-.user-img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
+.user-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+.heart-img {
+  display: flex;
+  margin: 10px;
+  align-items: flex-end;
+  padding-left: 20px;
+}
+.comment-img {
+  display: flex;
+  margin: 8px;
+  align-items: flex-end;
+  padding-left: 10px;
+}
+.caption {
+  display: flex;
+  margin: 5px;
+  align-items: flex-end;
+  padding-left: 10px;
 }
 .img {
-    width: 100%;
+  width: 100%;
 }
