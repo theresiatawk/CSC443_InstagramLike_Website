@@ -23,7 +23,7 @@
                 </p>
             </div>
             <div>
-                <button class="joinus go-to" onclick = "goToLoginHandler()">JOIN US</button>
+                <button id = "join_us" class="joinus go-to">JOIN US</button>
             </div>
         </div>
         <div class = "login" id = "card2">
@@ -32,11 +32,11 @@
             </div>
             <div>
                 <form class = form>
-                    <input class = "input" type="text" placeholder="Email"><br><br>
-                    <input class = "input" type="password" placeholder="Password"><br><br>
+                    <input id = "email1" class = "input" type="text" placeholder="Email" required><br><br>
+                    <input id = "password" class = "input" type="password" placeholder="Password" required><br><br>
                     <label class = "small-text">Do not have an account</label>
-                    <a class = "register-link" onclick="goToSignupHandler()"><b>Register?</b></a><br>
-                    <input class = "login-btn" type="submit" value="Login">
+                    <a id = "register" class = "register-link"><b>Register?</b></a><br>
+                    <input id ="login" class = "login-btn" type="button" value="Login">
                 </form>
             </div>
         </div>
@@ -51,13 +51,12 @@
                     <input id = "email" class = "input" type="email" placeholder="Email" required><br><br>
                     <input id = "pass" class = "input" type="password" placeholder="Password" required><br><br>
                     <label class = "small-text">Already have an account</label>
-                    <a class = "register-link" onclick="goToLoginHandler()"><b>Login?</b></a><br>
+                    <a id = "signin" class = "register-link"><b>Login?</b></a><br>
                     <input id ="signup" class = "login-btn" type="button" value="Signup">
                 </form>
             </div>
         </div>
         <div id = "response" class = "result"></div>
-
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>

@@ -17,7 +17,7 @@ instagram_like_pages.loadFor = (page) => {
   eval("instagram_like_pages.load_" + page + "();");
 };
 
-instagram_like_pages.signup = async (api_url, api_data, api_token = null) => {
+instagram_like_pages.postAPI = async (api_url, api_data, api_token = null) => {
   try {
     return await axios.post(api_url, api_data, {
       headers: {
@@ -30,8 +30,15 @@ instagram_like_pages.signup = async (api_url, api_data, api_token = null) => {
 };
 
 instagram_like_pages.load_landing = () => {
+
   const signup_btn = document.getElementById("signup");
+  const login_btn = document.getElementById("login");
   const result = document.getElementById("response");
+
+  const responseHandler = () => {
+    result.innerHTML = '<div id = "response" class = "result"></div>';
+  }
+
   const signup = async () => {
     const signup_url = base_url + "signup.php";
 
@@ -41,7 +48,7 @@ instagram_like_pages.load_landing = () => {
     signup_data.append("email", document.getElementById("email").value);
     signup_data.append("password", document.getElementById("pass").value);
 
-    const response = await instagram_like_pages.signup(signup_url, signup_data);
+    const response = await instagram_like_pages.postAPI(signup_url, signup_data);
     if (response.data.Error) {
       result.innerHTML =
         '<div id = "response" class = "result">' +
@@ -54,25 +61,29 @@ instagram_like_pages.load_landing = () => {
         response.data.Success +
         "<br>Now Login!</div>";
         setTimeout(responseHandler, 2000);
-        
     }
   };
-  const card1 = document.getElementById("card1");
-    const card2 = document.getElementById("card2");
-    const card3 = document.getElementById("card3");
+  const login = async () => {
+    const login_url = base_url + "login.php";
 
-    const goToLoginHandler = () => {
-      card1.style.display = "none";
-      card2.style.display = "flex";
-      card3.style.display = "none";
-    };
-    const goToSignupHandler = () => {
-      card1.style.display = "none";
-      card2.style.display = "none";
-      card3.style.display = "flex";
-    };
-    const responseHandler = () => {
-      result.innerHTML = '<div id = "response" class = "result"></div>';
+    const login_data = new URLSearchParams();
+    login_data.append("email", document.getElementById("email1").value);
+    login_data.append("password", document.getElementById("password").value);
+
+    const response = await instagram_like_pages.postAPI(login_url, login_data);
+    if (response.data.Error) {
+      result.innerHTML =
+        '<div id = "response" class = "result">' +
+        response.data.Error +
+        "</div>";
+        setTimeout(responseHandler, 2000);
+    } else {
+      let userData = [];
+      console.log(response.data);
+      // userData.push({ fname, lname, email, pwd, score });
+      // window.location.href = "stream.html";
     }
+  };
   signup_btn.addEventListener("click", signup);
+  login_btn.addEventListener("click", login);
 };
