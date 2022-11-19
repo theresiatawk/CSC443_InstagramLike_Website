@@ -78,12 +78,22 @@ instagram_like_pages.load_landing = () => {
         "</div>";
         setTimeout(responseHandler, 2000);
     } else {
-      let userData = [];
-      console.log(response.data);
-      // userData.push({ fname, lname, email, pwd, score });
-      // window.location.href = "stream.html";
+    // Saving user data in the local storage
+      const userData = [];
+      const user_id = response.data.Success.id;
+      const first_name = response.data.Success.first_name;
+      const last_name = response.data.Success.last_name;
+      const email = response.data.Success.email;
+
+      userData.push({ user_id, first_name, last_name, email});
+      localStorage.setItem('userData', JSON.stringify(userData));
+      const users = JSON.parse(localStorage.getItem('userData'));
+
+      // Switching to the stream page
+      window.location.href = "stream.html";
     }
   };
   signup_btn.addEventListener("click", signup);
   login_btn.addEventListener("click", login);
 };
+instag
