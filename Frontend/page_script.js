@@ -43,12 +43,36 @@ instagram_like_pages.load_landing = () => {
 
     const response = await instagram_like_pages.signup(signup_url, signup_data);
     if (response.data.Error) {
-      console.log(response.data.Error);
+      result.innerHTML =
+        '<div id = "response" class = "result">' +
+        response.data.Error +
+        "</div>";
+        setTimeout(responseHandler, 2000);
+    } else {
+      result.innerHTML =
+      '<div id = "response" class = "result">' +
+        response.data.Success +
+        "<br>Now Login!</div>";
+        setTimeout(responseHandler, 2000);
+        
     }
-    else{
-      console.log(response.data.Success);
-    }
-    console.log(result);
   };
+  const card1 = document.getElementById("card1");
+    const card2 = document.getElementById("card2");
+    const card3 = document.getElementById("card3");
+
+    const goToLoginHandler = () => {
+      card1.style.display = "none";
+      card2.style.display = "flex";
+      card3.style.display = "none";
+    };
+    const goToSignupHandler = () => {
+      card1.style.display = "none";
+      card2.style.display = "none";
+      card3.style.display = "flex";
+    };
+    const responseHandler = () => {
+      result.innerHTML = '<div id = "response" class = "result"></div>';
+    }
   signup_btn.addEventListener("click", signup);
 };
