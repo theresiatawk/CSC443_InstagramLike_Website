@@ -160,11 +160,17 @@
   align-items: center;
   margin: 5px;
 }
-.heart-img {
+.empty-heart-img {
   display: flex;
   margin: 10px;
   align-items: flex-end;
   padding-left: 20px;
+}
+.full-heart-img{
+    display: none;
+    margin: 10px;
+    align-items: flex-end;
+    padding-left: 20px;
 }
 .comment-img {
   display: flex;
