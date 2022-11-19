@@ -21,36 +21,56 @@
         <img
           class="img"
           src="./Assets/purple_background.jpg"
-          width="400px"
+          width="200px"
           height="300px"
         />
       </div>
       <div class="caption">
-        <p>Better Days Together at the beach<br>Love itt</p>
+        <p>Better Days Together at the beach<br />Love itt</p>
       </div>
       <div class="flex-row">
         <div>
-          <img class="empty-heart-img" src="./Assets/empty_heart.png" width="20px" height="20px" />
-          <img class="full-heart-img" src="./Assets/full_heart.png" width="20px" height="20px" />
+          <img
+            class="heart-img"
+            src="./Assets/empty_heart.png"
+            width="20px"
+            height="20px"
+          />
         </div>
         <div class="comment-img">
           <img src="./Assets/comment.png" width="25px" height="25px" />
         </div>
       </div>
     </div>
+    <div class="comment-card comment-top" id = add_comment>
+      <div class = flex-row>
+        <h2 class="comment-header">Comment</h2>
+        <div class="-img">
+          <img src="./Assets/remove.png" width="20px" height="20px" />
+        </div>
+      </div>
+      <textarea class="comment-area" rows="10" cols="5"></textarea>
+      <form class="form">
+        <input class="add-btn" type="button" value="Add" />
+      </form>
+    </div>
     <div class="image-card"></div>
     <div class="image-card"></div>
     <div class="image-card"></div>
     <div class="navbar">
-        <div class = active>
-            <a href="stream.html"><img src="./Assets/home.png" width="25px" height="25px" /></a>
-        </div>
-        <div>
-            <a><img src="./Assets/plus.png" width="25px" height="25px" /></a>
-        </div>
-        <div>
-            <a href = "profile.html"><img src="./Assets/user.png" width="25px" height="25px" /></a>
-        </div>
+      <div class="active">
+        <a href="stream.html"
+          ><img src="./Assets/home.png" width="25px" height="25px"
+        /></a>
+      </div>
+      <div>
+        <a><img src="./Assets/plus.png" width="25px" height="25px" /></a>
+      </div>
+      <div>
+        <a href="profile.html"
+          ><img src="./Assets/user.png" width="25px" height="25px"
+        /></a>
+      </div>
     </div>
     <script src="logic.js" type="text/javascript"></script>
   </body>

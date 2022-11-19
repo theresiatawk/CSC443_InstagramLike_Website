@@ -1,7 +1,8 @@
 const card1 = document.getElementById("card1");
 const card2 = document.getElementById("card2");
 const card3 = document.getElementById("card3");
-const likes = document.querySelectorAll(".empty-heart-img");
+const likes = document.querySelectorAll(".heart-img");
+
  
 
 const goToLoginHandler = () =>{
@@ -16,17 +17,15 @@ const goToSignupHandler =() =>{
     card3.style.display = "flex";
 }
 const likeHandler = (e) =>{
+    // If already liked unlike
     if( e.srcElement.attributes[1].value == "./Assets/full_heart.png"){
-        console.log("YESS");
         e.srcElement.attributes[1].value = "./Assets/empty_heart.png"
     }
+    //like
     else{
-        console.log("NO");
         e.srcElement.attributes[1].value = "./Assets/full_heart.png"
     }
 }
 
-console.log(likes);
-console.log(unlikes);
 likes.forEach(b => b.addEventListener("click", likeHandler));
 
