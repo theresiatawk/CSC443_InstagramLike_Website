@@ -13,3 +13,6 @@ const goToSignupHandler =() =>{
     card2.style.display = "none";
     card3.style.display = "flex";
 }
+const likeImageHandler = () => {
+
+}

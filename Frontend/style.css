@@ -125,8 +125,7 @@
   align-items: center;
 }
 .image-card {
-  height: 440px;
-  width: 400px;
+  display: inline-block;
   box-shadow: 0 0 3px 0;
   background: inherit;
   backdrop-filter: blur(5px);
@@ -187,7 +186,7 @@
   background-color: #ffffff;
   position: fixed;
   bottom: 0;
-  display:flex;
+  display: flex;
   width: 100%;
 }
 
@@ -210,3 +209,51 @@
   background: #ddd;
   color: black;
 }
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 400px;
+  box-shadow: 0 0 3px 0;
+  background: inherit;
+  backdrop-filter: blur(5px);
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 25px;
+}
+.profile-header {
+  color: black;
+  text-align: justify;
+}
+.profile-input {
+    background: transparent;
+    width: 200px;
+    height: 40px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    border-color: black;
+    caret-color: black;
+    color: black;
+}
+.profile-input::placeholder {
+    color: black;
+    opacity: 0.8;
+}
+.profile-input:focus {
+    outline: none;
+}
+.save-btn {
+    background-color: #ddd;
+    margin: auto;
+    border-radius: 25px;
+    border-color: black;
+    height: 30px;
+    width: 100px;
+    text-decoration: none;
+    color: black;
+}
+
