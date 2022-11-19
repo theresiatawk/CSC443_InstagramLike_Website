@@ -260,7 +260,7 @@
   position: absolute;
 }
 .comment-card {
-  display: flex;
+  display: none;
   flex-direction: column;
   height: 300px;
   width: 400px; 
@@ -276,7 +276,6 @@
 }
 .comment-area{
     background-color: transparent;
-    /* caret-color: white; */
     color: black;
     margin: 10px;
 }
@@ -292,4 +291,8 @@
   width: 100px;
   text-decoration: none;
   color: black;
+}
+.x-icon{
+    margin: 10px;
+    padding-left: 240px;
 }
