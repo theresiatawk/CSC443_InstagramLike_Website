@@ -29,22 +29,26 @@ instagram_like_pages.signup = async (api_url, api_data, api_token = null) => {
   }
 };
 
-instagram_like_pages.load_landing = async () => {
-  const signup_url = base_url + "signup.php";
-  var params = new URLSearchParams();
-  params.append('first_name', 'value1');
-  params.append('last_name', 'value2');
-  params.append('email', 'value2');
-  params.append('password', 'value2');
+instagram_like_pages.load_landing = () => {
+  const signup_btn = document.getElementById("signup");
+  const result = document.getElementById("response");
+  const signup = async () => {
+    const signup_url = base_url + "signup.php";
 
-  const signup_data = {
-    first_name: "Becca",
-    last_name: "tawk",
-    email: "Byblos",
-    password: "h"
+    const signup_data = new URLSearchParams();
+    signup_data.append("first_name", document.getElementById("f_name").value);
+    signup_data.append("last_name", document.getElementById("l_name").value);
+    signup_data.append("email", document.getElementById("email").value);
+    signup_data.append("password", document.getElementById("pass").value);
+
+    const response = await instagram_like_pages.signup(signup_url, signup_data);
+    if (response.data.Error) {
+      console.log(response.data.Error);
+    }
+    else{
+      console.log(response.data.Success);
+    }
+    console.log(result);
   };
-  console.log(signup_data);
-
-  const response = await instagram_like_pages.signup(signup_url, params);
-  console.log(response);
+  signup_btn.addEventListener("click", signup);
 };

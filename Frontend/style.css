@@ -48,6 +48,13 @@
   margin-top: 50px;
   border-radius: 25px;
 }
+.result{
+  display: flex;
+  color: red;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
 .header {
   color: white;
   text-align: justify;
