@@ -116,7 +116,16 @@ instagram_like_pages.load_stream = () => {
       console.log(response.data.Error);
     } else {
       const images = response.data;
-      let images_list = "";
+      let images_list = `<!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Instagram Like</title>
+              <link rel="stylesheet" href="style.css" />
+            </head>
+            <body class="stream-container">`;
       images.map(
         (image, i) =>
           (images_list += `<div id = "${image.id}" class="image-card flex-column">
@@ -137,7 +146,7 @@ instagram_like_pages.load_stream = () => {
                 />
               </div>
               <div class="caption">
-                <p>Better Days Together at the beach<br />Love itt</p>
+                <p>${image.caption}</p>
               </div>
               <div class="flex-row">
                 <div>
@@ -154,8 +163,47 @@ instagram_like_pages.load_stream = () => {
               </div>
             </div> `)
       );
+      images_list += 
+        `<div class="dropdown comment-top">
+            <div id="dropdown_stg" class="dropdown-content">
+              <a href="#">Delete Image</a>
+              <a href="#">Hide Image</a>
+            </div>
+        </div>
+
+        <div class="comment-card comment-top" id ="add_comment">
+          <div class="flex-row">
+            <h2 class="comment-header">Comment</h2>
+            <div class="x-icon" id="remove_icon">
+              <img src="./Assets/remove.png" width="20px" height="20px" />
+            </div>
+          </div>
+          <textarea class="comment-area" rows="10" cols="5"></textarea>
+          <form class="form">
+            <input class="add-btn" id="add_btn" type="button" value="Add" />
+          </form>
+        </div>
+
+        <div class="navbar">
+          <div class="active">
+            <a href="stream.html"
+              ><img src="./Assets/home.png" width="25px" height="25px"
+            /></a>
+          </div>
+          <div>
+            <a><img src="./Assets/plus.png" width="25px" height="25px" /></a>
+          </div>
+          <div>
+            <a href="profile.html"
+              ><img src="./Assets/user.png" width="25px" height="25px"
+            /></a>
+          </div>
+        </div>
+        <script src="logic.js" type="text/javascript"></script>
+      </body>
+      </html>`;
       document.write(images_list);
-      console.log(images);
+      // console.log(images);
     }
   };
   getImages();
