@@ -10,7 +10,7 @@ function validate($data){
     $data = stripslashes($data);
     return $data;
 }
-if (isset($_POST['user_id']) && isset($_FILES['url']) && isset($_POST['caption']) && isset($_POST['submit'])){
+if (isset($_POST['user_id']) && isset($_FILES['url']) && isset($_POST['caption'])){
 
     $user_id = validate($_POST['user_id']);
     $img_caption = validate($_POST['caption']);

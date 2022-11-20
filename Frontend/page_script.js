@@ -111,7 +111,6 @@ instagram_like_pages.load_stream = () => {
   const getImages = async () => {
     const get_images_url = base_url + "get_images.php?user_id=" + user_id;
     const response = await instagram_like_pages.getAPI(get_images_url);
-    console.log(response);
     if (response.data.Error) {
       console.log(response.data.Error);
     } else {
@@ -209,25 +208,26 @@ instagram_like_pages.load_stream = () => {
 };
 
 instagram_like_pages.load_add_image = () => {
-  const add_image_btn = document.getElementById("signup");
+  const add_image_btn = document.getElementById("add_image");
   const result = document.getElementById("response");
 
   const responseHandler = () => {
     result.innerHTML = '<div id = "response" class = "result"></div>';
   };
 
-  const signup = async () => {
+  const addImage = async () => {
     const add_image_url = base_url + "add_image.php";
+    const user = JSON.parse(localStorage.getItem("userData"));
+    const user_id = user[0].user_id;
 
-    const signup_data = new URLSearchParams();
-    signup_data.append("first_name", document.getElementById("f_name").value);
-    signup_data.append("last_name", document.getElementById("l_name").value);
-    signup_data.append("email", document.getElementById("email").value);
-    signup_data.append("password", document.getElementById("pass").value);
+    const add_image_data = new URLSearchParams();
+    add_image_data.append("user_id", user_id);
+    add_image_data.append("url", document.getElementById("img").value);
+    add_image_data.append("caption", document.getElementById("caption").value);
 
     const response = await instagram_like_pages.postAPI(
-      signup_url,
-      signup_data
+      add_image_url,
+      add_image_data
     );
     if (response.data.Error) {
       result.innerHTML =
@@ -239,40 +239,10 @@ instagram_like_pages.load_add_image = () => {
       result.innerHTML =
         '<div id = "response" class = "result">' +
         response.data.Success +
-        "<br>Now Login!</div>";
-      setTimeout(responseHandler, 2000);
-    }
-  };
-  const login = async () => {
-    const login_url = base_url + "login.php";
-
-    const login_data = new URLSearchParams();
-    login_data.append("email", document.getElementById("email1").value);
-    login_data.append("password", document.getElementById("password").value);
-
-    const response = await instagram_like_pages.postAPI(login_url, login_data);
-    if (response.data.Error) {
-      result.innerHTML =
-        '<div id = "response" class = "result">' +
-        response.data.Error +
         "</div>";
       setTimeout(responseHandler, 2000);
-    } else {
-      // Saving user data in the local storage
-      const userData = [];
-      const user_id = response.data.Success.id;
-      const first_name = response.data.Success.first_name;
-      const last_name = response.data.Success.last_name;
-      const email = response.data.Success.email;
-
-      userData.push({ user_id, first_name, last_name, email });
-      localStorage.setItem("userData", JSON.stringify(userData));
-
-      // Switching to the stream page
-      window.location.href = "stream.html";
     }
   };
-  signup_btn.addEventListener("click", signup);
-  login_btn.addEventListener("click", login);
+  add_image_btn.addEventListener("click", addImage);
 };
 
