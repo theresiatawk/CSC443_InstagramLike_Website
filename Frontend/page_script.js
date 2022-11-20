@@ -191,7 +191,7 @@ instagram_like_pages.load_stream = () => {
             /></a>
           </div>
           <div>
-            <a><img src="./Assets/plus.png" width="25px" height="25px" /></a>
+            <a href="addImage.html"><img src="./Assets/plus.png" width="25px" height="25px" /></a>
           </div>
           <div>
             <a href="profile.html"
@@ -203,8 +203,76 @@ instagram_like_pages.load_stream = () => {
       </body>
       </html>`;
       document.write(images_list);
-      // console.log(images);
     }
   };
   getImages();
 };
+
+instagram_like_pages.load_add_image = () => {
+  const add_image_btn = document.getElementById("signup");
+  const result = document.getElementById("response");
+
+  const responseHandler = () => {
+    result.innerHTML = '<div id = "response" class = "result"></div>';
+  };
+
+  const signup = async () => {
+    const add_image_url = base_url + "add_image.php";
+
+    const signup_data = new URLSearchParams();
+    signup_data.append("first_name", document.getElementById("f_name").value);
+    signup_data.append("last_name", document.getElementById("l_name").value);
+    signup_data.append("email", document.getElementById("email").value);
+    signup_data.append("password", document.getElementById("pass").value);
+
+    const response = await instagram_like_pages.postAPI(
+      signup_url,
+      signup_data
+    );
+    if (response.data.Error) {
+      result.innerHTML =
+        '<div id = "response" class = "result">' +
+        response.data.Error +
+        "</div>";
+      setTimeout(responseHandler, 2000);
+    } else {
+      result.innerHTML =
+        '<div id = "response" class = "result">' +
+        response.data.Success +
+        "<br>Now Login!</div>";
+      setTimeout(responseHandler, 2000);
+    }
+  };
+  const login = async () => {
+    const login_url = base_url + "login.php";
+
+    const login_data = new URLSearchParams();
+    login_data.append("email", document.getElementById("email1").value);
+    login_data.append("password", document.getElementById("password").value);
+
+    const response = await instagram_like_pages.postAPI(login_url, login_data);
+    if (response.data.Error) {
+      result.innerHTML =
+        '<div id = "response" class = "result">' +
+        response.data.Error +
+        "</div>";
+      setTimeout(responseHandler, 2000);
+    } else {
+      // Saving user data in the local storage
+      const userData = [];
+      const user_id = response.data.Success.id;
+      const first_name = response.data.Success.first_name;
+      const last_name = response.data.Success.last_name;
+      const email = response.data.Success.email;
+
+      userData.push({ user_id, first_name, last_name, email });
+      localStorage.setItem("userData", JSON.stringify(userData));
+
+      // Switching to the stream page
+      window.location.href = "stream.html";
+    }
+  };
+  signup_btn.addEventListener("click", signup);
+  login_btn.addEventListener("click", login);
+};
+
