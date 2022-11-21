@@ -254,13 +254,75 @@ instagram_like_pages.load_add_image = () => {
 };
 
 instagram_like_pages.load_profile = () => {
+  const user = JSON.parse(localStorage.getItem("userData"));
+  const user_id = user[0].user_id;
   const edit_profile_btn = document.getElementById("edit_profile");
   const result = document.getElementById("response");
 
   const responseHandler = () => {
     result.innerHTML = '<div id = "response" class = "result"></div>';
   };
-
+  const getProfile = async () => {
+    const get_profile_url = base_url + "get_profile.php?user_id=" + user_id;
+    const response = await instagram_like_pages.getAPI(get_profile_url);
+    if (response.data.Error) {
+      console.log(response.data.Error);
+    } else {
+      const profile = response.data.Success;
+      let profile_html = `<!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="stylesheet" href="style.css" />
+          <title>InstagramLike</title>
+        </head>
+        <body class="stream-container">
+          <div class="profile">
+            <div class="profile-header">
+              <h1>${profile.first_name} ${profile.last_name}</h1>
+            </div>
+            <div>
+              <form class="form">
+                <div>
+                  <label><b>First Name: </b></label>
+                  <input id = "f_name" class="profile-input" type="text" value = "${profile.first_name}"/><br /><br />
+                </div>
+                <div>
+                  <label><b>Last Name: </b></label>
+                  <input id = "l_name" class="profile-input" type="text" value = "${profile.last_name}/><br /><br />
+                </div>
+                <div>
+                  <label><b>Email: </b></label>
+                  <input id = "email" class="profile-input" type="email" value = "${profile.email}/><br /><br />
+                </div>
+                <input id = edit_profile class="save-btn" type="button" value="Save" />
+              </form>
+            </div>
+          </div>
+          <div id = "response" class = "result"></div>
+          <div class="navbar">
+            <div>
+              <a href="stream.html"
+                ><img src="./Assets/home.png" width="25px" height="25px"
+              /></a>
+            </div>
+            <div>
+              <a href="addImage.html"><img src="./Assets/plus.png" width="25px" height="25px" /></a>
+            </div>
+            <div class="active">
+              <a href="profile.html"
+                ><img src="./Assets/user.png" width="25px" height="25px"
+              /></a>
+            </div>
+          </div>
+        </body>
+      </html>`;
+      document.write(images_list);
+    };
+    getProfile();
+  }
   const updateProfile = async () => {
     const update_profile_url = base_url + "update_profile.php";
     const user = JSON.parse(localStorage.getItem("userData"));
