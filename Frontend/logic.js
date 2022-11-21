@@ -14,10 +14,11 @@ const commentHandler = (e) => {
   img_id = e.target.parentElement.id;
 };
 const removeCommentCardHandler = (e) => {
-  console.log("yess");
   comment_card.style.display = "none";
 };
-const imageSettingHanlder = (e) => {
+const imageSettingHandlder = (e) => {
+  console.log("I am here");
+  console.log(dots_icons);
   if (dropdown_stg.style.display == "flex") {
     dropdown_stg.style.display = "none";
   } else {
@@ -51,7 +52,6 @@ const likeImageHandler = async (e) => {
 const saveCommentHandler = async (e) => {
   console.log(document.getElementById("comment_content").value);
   comment_card.style.display = "none";
-  const image_id = e.target.parentElement.id;
   const add_comment_url =
     base_url + "add_comment.php";
   const add_comment_data = new URLSearchParams();
@@ -67,8 +67,8 @@ const saveCommentHandler = async (e) => {
   }
 };
 comment_icons.forEach((b) => b.addEventListener("click", commentHandler));
-console.log(comment_icons);
-dots_icons.forEach((b) => b.addEventListener("click", imageSettingHanlder));
+dots_icons.forEach((b) => b.addEventListener("click", imageSettingHandlder));
+console.log(dots_icons);
 remove_icon.addEventListener("click", removeCommentCardHandler);
 add_btn.addEventListener("click", saveCommentHandler);
 like_icons.forEach((b) => b.addEventListener("click", likeImageHandler));

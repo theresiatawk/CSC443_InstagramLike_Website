@@ -26,7 +26,7 @@ instagram_like_pages.postAPI = async (api_url, api_data, api_token = null) => {
       },
     });
   } catch (error) {
-    instagram_like_pages.Console("Error from Signup API", error);
+    instagram_like_pages.Console("Error from Linking (POST)", error);
   }
 };
 instagram_like_pages.getAPI = async (api_url) => {
@@ -133,8 +133,8 @@ instagram_like_pages.load_stream = () => {
                 <div class="username">
                   <p><b>${image.first_name} ${image.last_name}</b></p>
                 </div>
-                <div class="dots-img">
-                  <img src="./Assets/dots.png" width="20px" height="20px" />
+                <div>
+                  <img class="dots-img" src="./Assets/dots.png" width="20px" height="20px" />
                 </div>
               </div>
               <div class="user-img">
@@ -252,3 +252,45 @@ instagram_like_pages.load_add_image = () => {
   };
   add_image_btn.addEventListener("click", addImage);
 };
+
+instagram_like_pages.load_profile = () => {
+  const edit_profile_btn = document.getElementById("edit_profile");
+  const result = document.getElementById("response");
+
+  const responseHandler = () => {
+    result.innerHTML = '<div id = "response" class = "result"></div>';
+  };
+
+  const updateProfile = async () => {
+    const update_profile_url = base_url + "update_profile.php";
+    const user = JSON.parse(localStorage.getItem("userData"));
+    const user_id = user[0].user_id;
+
+    const update_profile_data = new URLSearchParams();
+    update_profile_data.append("id", user_id);
+    update_profile_data.append("first_name", document.getElementById("f_name").value);
+    update_profile_data.append("last_name", document.getElementById("l_name").value);
+    update_profile_data.append("email", document.getElementById("email").value);
+
+    const response = await instagram_like_pages.postAPI(
+      update_profile_url,
+      update_profile_data
+    );
+    console.log(response.data);
+    if (response.data.Error) {
+      result.innerHTML =
+        '<div id = "response" class = "result">' +
+        response.data.Error +
+        "</div>";
+      setTimeout(responseHandler, 2000);
+    } else {
+      result.innerHTML =
+        '<div id = "response" class = "result">' +
+        response.data.Success +
+        "</div>";
+      setTimeout(responseHandler, 2000);
+    }
+  };
+  edit_profile_btn.addEventListener("click", updateProfile);
+};
+
