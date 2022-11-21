@@ -1,5 +1,6 @@
 const user = JSON.parse(localStorage.getItem("userData"));
 const user_id = user[0].user_id;
+let img_id;
 const like_icons = document.querySelectorAll(".heart-img");
 const comment_card = document.getElementById("add_comment");
 const remove_icon = document.getElementById("remove_icon");
@@ -10,7 +11,7 @@ const dropdown_stg = document.getElementById("dropdown_stg");
 
 const commentHandler = (e) => {
   comment_card.style.display = "flex";
-  console.log("I am here");
+  img_id = e.target.parentElement.id;
 };
 const removeCommentCardHandler = (e) => {
   console.log("yess");
@@ -48,14 +49,16 @@ const likeImageHandler = async (e) => {
   }
 };
 const saveCommentHandler = async (e) => {
+  console.log(document.getElementById("comment_content").value);
   comment_card.style.display = "none";
   const image_id = e.target.parentElement.id;
   const add_comment_url =
     base_url + "add_comment.php";
   const add_comment_data = new URLSearchParams();
   add_comment_data.append("user_id", user_id);
-  add_comment_data.append("image_id", 6);
+  add_comment_data.append("image_id", img_id);
   add_comment_data.append("content", document.getElementById("comment_content").value);
+  document.getElementById("comment_content").value = "";
   const response = await instagram_like_pages.postAPI(add_comment_url, add_comment_data);
   if (response.data.Error) {
     console.log(response.data);

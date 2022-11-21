@@ -262,13 +262,13 @@
   color: black;
 }
 .comment-top {
-  position: absolute;
+  position:fixed;
   z-index: 1;
   top: 0;
-  left: 0;
+  left:0;
   height: 100%;
   width: 100%;
-  z-index: 10;
+  z-index: 1;
 }
 .comment-card {
   display: none;

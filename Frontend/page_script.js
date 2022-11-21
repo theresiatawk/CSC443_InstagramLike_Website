@@ -22,7 +22,7 @@ instagram_like_pages.postAPI = async (api_url, api_data, api_token = null) => {
     return await axios.post(api_url, api_data, {
       headers: {
         Authorization: "token " + api_token,
-        "Content-Type": "multipart/form-data boundary=something",
+        // "Content-Type": "multipart/form-data boundary=something",
       },
     });
   } catch (error) {
@@ -157,7 +157,7 @@ instagram_like_pages.load_stream = () => {
                     height="20px"
                   />
                 </div>
-                <div class="comment-img">
+                <div id = "${image.id}" class="comment-img">
                   <img src="./Assets/comment.png" width="25px" height="25px" />
                 </div>
               </div>
