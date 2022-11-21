@@ -149,7 +149,7 @@ instagram_like_pages.load_stream = () => {
                 <p>${image.caption}</p>
               </div>
               <div class="flex-row">
-                <div>
+                <div id = "${image.id}">
                   <img
                     class="heart-img"
                     src="./Assets/empty_heart.png"
@@ -177,7 +177,7 @@ instagram_like_pages.load_stream = () => {
               <img src="./Assets/remove.png" width="20px" height="20px" />
             </div>
           </div>
-          <textarea class="comment-area" rows="10" cols="5"></textarea>
+          <textarea id = "comment_content" class="comment-area" rows="10" cols="5"></textarea>
           <form class="form">
             <input class="add-btn" id="add_btn" type="button" value="Add" />
           </form>
