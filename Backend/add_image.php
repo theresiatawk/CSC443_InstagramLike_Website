@@ -10,15 +10,17 @@ function validate($data){
     $data = stripslashes($data);
     return $data;
 }
-if (isset($_POST['user_id']) && isset($_FILES['url']) && isset($_POST['caption'])){
+// echo("USER_ID:".$_POST['user_id']);
+print_r($_FILES['file']['name']);
+if (isset($_POST['user_id']) && isset($_FILES['file']['name'])){
 
     $user_id = validate($_POST['user_id']);
     $img_caption = validate($_POST['caption']);
 
-    $img_name = $_FILES['url']['name'];
-    $img_size = $_FILES['url']['size'];
-    $tmp_name = $_FILES['url']['tmp_name'];
-    $error = $_FILES['url']['error'];
+    $img_name = $_FILES['file']['name'];
+    $img_size = $_FILES['file']['size'];
+    $tmp_name = $_FILES['file']['tmp_name'];
+    $error = $_FILES['file']['error'];
 
     // if no file was added
     if ($error === 4){

@@ -22,6 +22,7 @@ instagram_like_pages.postAPI = async (api_url, api_data, api_token = null) => {
     return await axios.post(api_url, api_data, {
       headers: {
         Authorization: "token " + api_token,
+        "Content-Type": "multipart/form-data boundary=something",
       },
     });
   } catch (error) {
@@ -162,8 +163,7 @@ instagram_like_pages.load_stream = () => {
               </div>
             </div> `)
       );
-      images_list += 
-        `<div class="dropdown comment-top">
+      images_list += `<div class="dropdown comment-top">
             <div id="dropdown_stg" class="dropdown-content">
               <a href="#">Delete Image</a>
               <a href="#">Hide Image</a>
@@ -198,7 +198,7 @@ instagram_like_pages.load_stream = () => {
             /></a>
           </div>
         </div>
-        <script src="logic.js" type="text/javascript"></script>
+        <script src="logic.js" type="text/javascript"></script> 
       </body>
       </html>`;
       document.write(images_list);
@@ -222,13 +222,20 @@ instagram_like_pages.load_add_image = () => {
 
     const add_image_data = new URLSearchParams();
     add_image_data.append("user_id", user_id);
-    add_image_data.append("url", document.getElementById("img").value);
+    const files = document.getElementById("img").files;
+    const formData = new FormData();
+    console.log(formData);
+    formData.append("file", files[0]);
+    console.log(formData);
+    console.log(document.getElementById("img").files[0]);
+    add_image_data.append("file", document.getElementById("img").files);
     add_image_data.append("caption", document.getElementById("caption").value);
 
     const response = await instagram_like_pages.postAPI(
       add_image_url,
       add_image_data
     );
+    console.log(response.data);
     if (response.data.Error) {
       result.innerHTML =
         '<div id = "response" class = "result">' +
@@ -245,4 +252,3 @@ instagram_like_pages.load_add_image = () => {
   };
   add_image_btn.addEventListener("click", addImage);
 };
-
